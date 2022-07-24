@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}Edit Book{% endblock title %} {% block body %}
+<form action="/update/{{book.id}}" method="POST">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="row mb-3 form-group">
+        <label for="book" class="col-sm-2 col-form-label">Book Name :</label>
+        <div class="col-sm-10 =">
+            <input name="book" type="text" value="{{book.book}}" class="form-control" id="book">
+        </div>
+    </div>
+    <div class="row mb-3 form-group">
+        <label for="author" class="col-sm-2 col-form-label">Author Name :</label>
+        <div class="col-sm-10">
+            <input name="author" type="text" value="{{book.author}}" class="form-control" id="author">
+        </div>
+    </div>
+    <div class="row mb-3 form-group">
+        <label for="edition" class="col-sm-2 col-form-label">Edition :</label>
+        <div class="col-sm-10">
+            <input name="edition" type="text" value="{{book.edition}}" class="form-control" id="edition">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+{% endblock body %}
